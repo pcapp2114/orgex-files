@@ -1,0 +1,50 @@
+<section class="feature-image">
+
+  {#Checks the Boolean field Image with text? if true, use object-fit: fill; css good for photos with text, if false use object-fit: cover; css good for photographs#}
+  {% if paragraph.field_image_text_1.value == '1' %}
+    <div class="feature-image__fill">
+      {{ content.field_fih_image.0 }}
+    </div>
+  {% else %}
+    <div class="feature-image__cover">
+      {{ content.field_fih_image.0 }}
+    </div>
+  {% endif %}
+
+  <div class="banner-inner-feature-image">
+
+    {% if content.field_fih_title[0] or content.field_fih_description[0] or content.field_fih_url_link[0]['#title'] %}
+    <div class="feature-image__body">
+
+
+      <div class="feature-image__text-backdrop">
+
+        {# check if title field has a value#}
+        {% if content.field_fih_title[0] is not empty %}
+        <div class="feature-image__title">{{ content.field_fih_title.0 }}</div>
+        {% endif %}
+
+        {# check if description field has a value#}
+        {% if content.field_fih_description[0] is not empty %}
+        <div class="feature-image__description">{{ content.field_fih_description.0 }}</div>
+        {% endif %}
+
+        {# check if link fieled has a value#}
+        {% if content.field_fih_url_link[0]['#title'] is not empty %}
+        <a href="{{ content.field_fih_url_link[0]['#url']|render }}" class="btn">Learn more</a>
+        {% endif %}
+
+
+      </div>
+
+    </div>
+    {% endif %}
+
+    {% if content.field_fih_title[0] is empty and content.field_fih_description[0] is empty and content.field_fih_url_link[0]['#title'] is empty %}
+      <div class="feature-paragraph-notext"></div>
+    {% endif %}
+
+
+  </div>
+</section>
+

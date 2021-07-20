@@ -1,0 +1,56 @@
+<header class="header clearfix" role="banner" aria-label="Site header">
+  {{ page.government_site }}
+  <div class="banner-logo">
+    <div class="d-flex banner-inner">
+      {{ page.header_logo }}
+      <div class="d-flex flex-fill flex-column">
+        <div class="d-flex justify-content-end search-box-form">
+          {{ page.header_search }}
+        </div>
+        <div class="d-none d-md-block">
+          <div class="d-flex justify-content-end secondary_menu">
+            {{ page.header_secondary_menu }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="banner-menu">
+    <nav class="banner-inner-menu clearfix" aria-label="Navigation">
+      {{ page.menu }}
+    </nav>
+  </div>
+
+</header>
+
+<div class="banner-main">
+  <div class="banner-inner clearfix">
+    <div id="main" class="{{ container }}">
+      <div class="row row-offcanvas row-offcanvas-left clearfix">
+
+        <main class="main-content-article col-12">
+          <article>
+            <section class="section">
+              {# Skip link anchor is here #}
+              <a id="main-content" tabindex="-1"></a>
+              {{ page.content }}
+            </section>
+          </article>
+        </main>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer banner-footer">
+  <div class="banner-inner">
+    <div class="{{ container }}" role="contentinfo">
+      <div class="clearfix secondary_menu_footer">
+        <h2 class="sr-only">Footer navigation</h2>
+        {{ page.footer }}
+      </div>
+    </div>
+  </div>
+</div>

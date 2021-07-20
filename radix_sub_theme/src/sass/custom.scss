@@ -1,0 +1,758 @@
+// Testing styles
+// -----------------------------------------------------------------------------
+
+$blue: blue;
+$ubuntu-font: 'Ubuntu', 'Arial', 'Helvetica', sans-serif;
+
+.test1{
+  background-color: yellow;
+}
+
+.test5{
+  background-color: pink;
+}
+
+.test6{
+  background-color: $blue;
+}
+
+// colors
+// -----------------------------------------------------------------------------
+:root {
+  --orgex--blue: #279ed2;
+  --orgex--brown: #694f50;
+  --orgex--orange: #f57c29;
+
+  --banner-logo-blue: #2d65a9;
+  --banner-logo-white: white;
+
+  --light-blue: #bcdbf3;
+  --medium-blue: #60a7dc;
+  --dark-blue: #2d65a9;
+  --light-grey: #e5e5e5;
+  --medium-grey: #c4c4c4;
+  --dark-grey: #6e6d6d;
+
+}
+
+// Base styles
+// -----------------------------------------------------------------------------
+//Reboot override
+html {
+  line-height: normal;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  color: black;
+  background-color: white;
+  font-family: "Source Sans Pro", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  font-size: 1rem;
+  line-height: normal;
+}
+
+p {
+  line-height: normal;
+  font-size: 1rem;
+}
+
+// force pre tag to wrap, good for mobile display
+pre {
+  white-space: pre-wrap;
+}
+
+// Fonts
+// -----------------------------------------------------------------------------
+@font-face {
+  font-family: "Roboto Condensed";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../../assets/fonts/RobotoCondensed-Regular.eot?") format("eot"),
+  url("../../assets/fonts/RobotoCondensed-Regular.woff2") format("woff2"),
+  url("../../assets/fonts/RobotoCondensed-Regular.woff") format("woff"),
+  url("../../assets/fonts/RobotoCondensed-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Merriweather Regular";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../../assets/fonts/Merriweather-Regular.ttf") format("truetype");
+}
+
+/*FontAwesome*/
+@font-face {
+  font-family: 'FontAwesome';
+  src: url("../../../libraries/fontawesome/webfonts/fa-regular-400.eot");
+  src: url("../../../libraries/fontawesome/webfonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("../../../libraries/fontawesome/webfonts/fa-regular-400.woff2") format("woff2"),
+  url("../../../libraries/fontawesome/webfonts/fa-regular-400.woff") format("woff"),
+  url("../../../libraries/fontawesome/webfonts/fa-regular-400.ttf") format("truetype"), url("../../../libraries/fontawesome/webfonts/fa-regular-400.svg#fontawesome") format("svg");
+}
+
+// Wrappers
+// -----------------------------------------------------------------------------
+.banner-inner,
+.banner-inner-menu,
+.banner-inner-feature-image {
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  max-width: 75rem;
+}
+
+.banner-local-task {
+  margin-left: auto;
+  margin-right: auto;
+  width: 75rem;
+}
+
+// effects anything smaller than shown below
+// left and right padding for mobile is smaller
+@media screen and (max-width: 968px) {
+  .banner-inner {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+}
+
+
+
+// effects anything smaller than shown below
+// left and right padding for mobile is smaller
+@media screen and (max-width: 968px) {
+  .banner-inner-menu {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+.main-content-article {
+  padding-left: 1rem;
+}
+
+// effects anything smaller than shown below
+// left and right padding for mobile is smaller
+@media screen and (max-width: 968px) {
+  .main-content-article {
+    padding-left: 10px;
+  }
+}
+
+// Government section
+// -----------------------------------------------------------------------------
+.banner-government-site {
+  background-color: var(--light-grey);
+}
+
+.government-site__banner {
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: .75rem;
+  /*width: 600px;*/
+}
+
+// effects anything smaller than shown below
+// Keeps the drop down content from expanding offscreen
+@media screen and (max-width: 768px) {
+  .government-site__banner {
+    width: auto !important;
+  }
+}
+
+.government-site__banner .btn {
+  font-size: .75rem;
+  padding: 0;
+  margin: 0;
+
+}
+
+.government-site__banner img {
+  width: 1.2rem;
+  margin-right: .4rem;
+  margin-top: .2rem;
+}
+
+.government-site__content {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+img.government-site__icon {
+  float: left;
+  margin-right: 15px;
+  width: 3rem;
+}
+
+.government-site__text p {
+  font-size: .9rem;
+  overflow: hidden;
+}
+
+.government-site__header {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+​.toggle-indicator:before {
+  font-family: FontAwesome;
+  content: '\f358';
+}
+
+.lock-indicator:before {
+  font-family: FontAwesome;
+  content: '\f023';
+}
+
+
+a.dropdown-toggle {
+  cursor: pointer;
+}
+
+a.dropdown-toggle:hover {
+  cursor: pointer;
+}
+
+// Main logo header
+// -----------------------------------------------------------------------------
+
+// Top banner variations
+
+//.banner-logo {
+//  background-color: var(--banner-logo-white);
+//}
+
+.banner-logo {
+  background-color: var(--banner-logo-blue);
+}
+
+.main-logo-header {
+  padding: .5rem 0 .5rem 0;
+  position: relative;
+}
+
+//logo padding for small device
+@media screen and (max-width: 768px) {
+  .main-logo-header {
+    padding-top: .4rem;
+  }
+}
+
+.main-logo-header__image img {
+  height: 60px;
+  width: 60px;
+  margin: 0 3px 0 0;
+  filter: drop-shadow(1px 2px 2px #16447d);
+}
+
+h1.main-logo-header__text {
+  font-family: "Merriweather Regular", Helvetica, Arial, sans-serif;
+  font-size: 1.5rem;
+  font-variant: small-caps;
+  line-height: normal;
+  //color: var(--orgex--blue);
+  color: white;
+  padding: 2px 0 0 0;
+}
+.main-logo-header__text-alt {
+  //color: var(--orgex--brown);
+  color: var(--light-blue);
+  //color: white;
+  font-size: 1.8rem;
+  position: absolute;
+  top: 30px;
+  left: 90px;
+  filter: drop-shadow(1px 2px 2px #16447d);
+}
+
+h1.main-logo-header__text a,
+h1.main-logo-header__text a:focus,
+h1.main-logo-header__text a:hover,
+h1.main-logo-header__text a:visited,
+h1.main-logo-header__text a:active {
+  text-decoration: none;
+  //color: var(--orgex--blue);
+  color: white;
+}
+
+h2.main-logo-header__text-small {
+  font-family: "Merriweather Regular", Helvetica, Arial, sans-serif;
+  padding-left: .2rem;
+  font-size: .6rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: normal;
+  color: var(--dark-grey);
+  padding: 0 0 0 5px;
+  position: absolute;
+  top: 62px;
+  left: 75px;
+  white-space: nowrap;
+}
+
+.main-logo-header__text-small-mobile {
+  font-family: "Merriweather Regular", Helvetica, Arial, sans-serif;
+  padding-left: .2rem;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: normal;
+  color: var(--orgex--blue);
+  padding: 0 0 0 0;
+  position: absolute;
+  top: 14px;
+  left: 57px;
+  white-space: nowrap;
+}
+
+
+//make font smaller for tablet device 968px and smaller
+@media screen and (max-width: 768px) {
+  .main-logo-header__text a {
+    font-size: 1.2rem;
+  }
+}
+
+//make font smaller for tablet device 968px and smaller
+@media screen and (max-width: 768px) {
+  a.main-logo-header__text-small {
+    font-size: 1.5rem;
+    position: relative;
+    top: .7rem;
+  }
+}
+
+// Menu header
+// -----------------------------------------------------------------------------
+
+.banner-menu {
+  margin-bottom: 1px;
+  height: 2.5rem;
+  background-color: black;
+}
+
+
+// Secondary menu in top header
+// -----------------------------------------------------------------------------
+
+.header-secondary-menu > ul a,
+.header-secondary-menu > ul a:focus,
+.header-secondary-menu > ul a:hover,
+.header-secondary-menu > ul a:active,
+.header-secondary-menu > ul a:visited {
+  font-size: .7rem;
+  padding: 0 0 0 .9rem;
+  margin: 0;
+  text-transform: uppercase;
+  /*color: black;*/
+  /* white color for extranet site*/
+  color: white;
+}
+
+
+// Header search form
+// -----------------------------------------------------------------------------
+
+// search box padding
+.header-search-form #search-block-form {
+  padding: .7rem 0 0 0;
+  margin: 0;
+}
+
+// search box padding for small device
+@media screen and (max-width: 668px) {
+  .header-search-form #search-block-form {
+    padding: 1.1rem 0 0 0;
+  }
+}
+
+// search box padding
+.header-search-form .form-row>fieldset, .form-row>div {
+  padding-right: 0!important;
+  padding-left: 0!important;
+}
+
+// search box width
+.header-search-block-form .js-form-type-search{
+  width: 20rem;
+}
+
+// search box width for small device
+@media screen and (max-width: 668px) {
+  .header-search-block-form .js-form-type-search{
+    width: 9rem;
+  }
+}
+
+// search box background color
+.header-search-block-form .form-control {
+  border-radius: 0 !important;
+  height: 2rem;
+  background: var(--light-grey);
+}
+
+// search box button
+.header-search-block-form .btn-primary {
+  height: 2rem;
+  border-radius: 0 !important;
+  background-image: url(/themes/custom/radix_sub_theme/assets/images/search.png);
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-color: black;
+}
+
+
+// Breadcrumb
+// -----------------------------------------------------------------------------
+
+
+.breadcrumb-main{
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+  list-style: none;
+  background-color: var(--light-grey);
+}
+
+.breadcrumb-main ol.breadcrumb {
+  padding: .2rem 0 .2rem .5rem;
+  margin: 0;
+}
+
+.breadcrumb-main .breadcrumb-item+.breadcrumb-item {
+  padding: .1rem 0 0 0;
+}
+
+.breadcrumb-main ol.breadcrumb li:first-child {
+}
+
+.breadcrumb-main ol.breadcrumb li {
+  padding: .1rem 0 0 0;
+}
+
+.breadcrumb-main ol.breadcrumb li a{
+  padding: 0 .3rem 0 0;
+}
+
+.breadcrumb-main > nav > ol > li a {
+  color: #6c757d;
+  padding: .1rem .5rem 0 0;
+}
+
+// remove home link and house icon
+.breadcrumb-main ol.breadcrumb li:first-child a::before {
+  background-image: none!important;
+  background-size: 0!important;
+  background-position: 0!important;
+  width: 0!important;
+  height: 0!important;
+}
+
+/* page title */
+/* XXXXXXXXXXXXXXXXXXXXXXXXXX */
+
+.main-page-title {
+  font-family: "Merriweather Regular", Helvetica, Arial, sans-serif;
+  font-size: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  color: black;
+  padding-top: 1rem;
+}
+
+// Superfish desktop menu use class .sf-horizontal
+// -----------------------------------------------------------------------------
+
+ul.sf-horizontal > li {
+  height: 2.5rem;
+  display: block;
+}
+
+ul.sf-horizontal li:hover > ul, ul.sf-menu li.sfHover > ul {
+  top: 2.5rem;
+}
+
+// 1st level menu items with link
+.sf-horizontal li a,
+.sf-horizontal li a:focus,
+.sf-horizontal li a:hover,
+.sf-horizontal li a:active {
+  color: white;
+  text-decoration: none;
+  width: auto;
+}
+
+// 1st level menu items without link
+ul.sf-horizontal > li {
+  color: white;
+  cursor: pointer;
+  font-size: .9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: black!important;
+}
+
+// make 2nd level menu item not capitalized and normal weight
+ul.sf-horizontal li ul {
+  font-weight: normal;
+  text-transform: none;
+}
+
+// 1st level active-trail color
+ul.sf-horizontal > li.active-trail  {
+  //background: var(--dark-grey)!important;
+  background-color: var(--dark-blue)!important;
+  color: white;
+}
+
+ul.sf-horizontal li ul li a {
+  font-weight: normal;
+  color: white;
+  text-decoration: none;
+  line-height: 1rem;
+  padding: .5rem .5rem .5rem .5rem;
+}
+
+ul.sf-horizontal ul {
+  margin-top: .7rem;
+}
+
+// superfish dropdown arrows from desktop menu
+ul.sf-horizontal li .sf-depth-1 .sf-sub-indicator {
+
+  opacity: 0.5;
+  font-size: .7rem;
+}
+
+// background for 2nd level items
+ul.sf-horizontal ul {
+  //background-color: var(--dark-grey)!important;
+  background-color: var(--dark-blue)!important;
+}
+
+// hover background for 2nd level items
+ul.sf-horizontal ul li:hover {
+  background-color: black;
+}
+
+
+
+// Superfish mobile menu use class use sf-accordion
+// menu sf-menu sf-style-none sf-accordion sf-expanded*/
+// -----------------------------------------------------------------------------
+
+// menu text link attributes
+.sf-accordion li,
+.sf-accordion li:focus,
+.sf-accordion li:hover,
+.sf-accordion li:active {
+  cursor: pointer;
+  color: white;
+  font-size: .9rem;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.sf-accordion li a,
+.sf-accordion li a:focus,
+.sf-accordion li a:hover,
+.sf-accordion li a:active {
+  color: white;
+  font-size: .9rem;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+// make 2nd level menu item not capitalized and normal weight
+.sf-accordion li ul a,
+.sf-accordion li ul a:focus,
+.sf-accordion li ul a:hover,
+.sf-accordion li ul a:active {
+  font-weight: normal;
+  text-transform: none;
+  line-height: 1rem;
+  padding: .5rem .5rem .5rem .5rem;
+}
+
+//second level li add padding to left
+//ul.sf-menu.sf-accordion li li {
+//  padding-left: 20px;
+//}
+
+// hamburger icon
+div.sf-accordion-toggle{
+  padding-top: .7rem;
+
+}
+
+.sf-accordion-toggle a {
+  color: white;
+  font-size: .9rem;
+  text-decoration: none;
+  padding: .5rem;
+  margin: 0;
+  background-color: var(--dark-grey);
+}
+
+.sf-accordion-toggle a:focus,
+.sf-accordion-toggle a:hover,
+.sf-accordion-toggle a:active,
+.sf-accordion-toggle a:visited {
+  color: white;
+}
+
+ul#superfish-main-accordion {
+  Background-color: var(--dark-grey);
+}
+
+// padding for accordion ul
+ul#superfish-main-accordion{
+  margin-top: .4rem;
+}
+
+// add dark blue background hover to the 1st level ul li
+ul#superfish-main-accordion li a:focus,
+ul#superfish-main-accordion li a:hover,
+ul#superfish-main-accordion li a:active {
+  background-color: black;
+}
+
+// add lighter blue background hover to the 2nd level ul li
+ul#superfish-main-accordion ul li {
+  background-color: black;
+}
+
+ul#superfish-main-accordion li .active-trail {
+  background-color: var(--dark-grey);
+}
+
+
+// Layout builder padding issue
+// https://www.drupal.org/project/drupal/issues/3061987
+// -----------------------------------------------------------------------------
+
+.layout__region {
+  box-sizing: border-box;
+  margin: 10px 0;
+}
+
+.layout__region--top {
+  margin-top: 0;
+}
+
+.layout__region--bottom {
+  margin-bottom: 0;
+}
+
+[class*="layout__region--first"] {
+  padding-right: 15px;
+}
+
+[dir="rtl"] [class*="layout__region--first"] {
+  padding-right: 0;
+  padding-left: 15px;
+}
+
+[class*="layout__region--second"] {
+  padding-left: 15px;
+}
+
+[dir="rtl"] [class*="layout__region--second"] {
+  padding-right: 15px;
+  padding-left: 0;
+}
+
+.layout__region--third {
+  padding-left: 30px;
+}
+
+[dir="rtl"] .layout__region--third {
+  padding-right: 30px;
+  padding-left: 0;
+}
+
+.layout__region--fourth {
+  padding-left: 30px;
+}
+
+[class*="layout__region--fourth"] {
+  padding-left: 15px;
+}
+
+@media screen and (max-width: 40em) {
+  .layout__region {
+    padding: 0;
+  }
+}
+
+
+
+// Paragraph carousel
+// -----------------------------------------------------------------------------
+
+.carousel-images {
+  height: 350px;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.carousel-images__fill img{
+  width: 100%;
+  object-fit: fill;
+  height: 350px;
+}
+
+.carousel-images__cover img{
+  width: 100%;
+  object-fit: cover;
+  height: 350px;
+}
+
+.carousel-images .carousel-images__title {
+  font-family: "Merriweather Regular", Helvetica, Arial, sans-serif;
+  font-size: 1.4rem;
+  color: white;
+}
+.carousel-images .carousel-images__description {
+  color: white;
+}
+
+.carousel-images .carousel-caption .btn {
+  color: white;
+  background-color: var(--medium-blue);
+  position: relative;
+}
+
+// Make all text and btn smaller for small device
+@media screen and (max-width: 568px) {
+  .carousel-images .carousel-images__title {
+    font-size: .9rem;
+  }
+  .carousel-images .carousel-images__description {
+    font-size: .9rem;
+  }
+  .carousel-images .carousel-caption .btn {
+    height: 5vh;
+    padding: .1rem !important;
+  }
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 1rem;
+}
+
+
+
+.carousel-indicators {
+  left: 15rem;
+}
+
+.carousel-images .carousel-caption {
+  text-align: center;
+  padding: .2rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  box-shadow: 1px 1px 5px var(--dark-grey);
+}

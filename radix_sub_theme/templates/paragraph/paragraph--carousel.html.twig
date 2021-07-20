@@ -1,0 +1,76 @@
+<section class="carousel-images clearfix">
+  <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" data-interval="false">
+    <ol class="carousel-indicators">
+      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+
+        {#Checks the Boolean field Image with text? if true, use object-fit: fill; css good for photos with text, if false use object-fit: cover; css good for photographs#}
+        {% if paragraph.field_image_text_1.value == '1' %}
+        <div class="carousel-images__fill">
+          {{ content.field_carousel_image_1.0 }}
+        </div>
+          {% else %}
+            <div class="carousel-images__cover">
+              {{ content.field_carousel_image_1.0 }}
+            </div>
+          {% endif %}
+
+        <div class="carousel-caption d-sm-block">
+          <h5 class="carousel-images__title">{{ content.field_carousel_title_1.0 }}</h5>
+          <p class="carousel-images__description">{{ content.field_carousel_description_1.0 }}</p>
+          <a href="{{ content.field_carousel_url_link_1[0]['#url']|render }}" class="btn">Learn more</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+
+        {#Checks the Boolean field Image with text? if true, use object-fit: fill; css good for photos with text, if false use object-fit: cover; css good for photographs#}
+        {% if paragraph.field_image_text_2.value == '1' %}
+        <div class="carousel-images__fill">
+          {{ content.field_carousel_image_2.0 }}
+        </div>
+          {% else %}
+            <div class="carousel-images__cover">
+              {{ content.field_carousel_image_2.0 }}
+            </div>
+          {% endif %}
+
+        <div class="carousel-caption d-sm-block">
+          <h5 class="carousel-images__title">{{ content.field_carousel_title_2.0 }}</h5>
+          <p class="carousel-images__description">{{ content.field_carousel_description_2.0 }}</p>
+          <a href="{{ content.field_carousel_url_link_2[0]['#url']|render }}" class="btn">Learn more</a>
+        </div>
+      </div>
+      <div class="carousel-item">
+
+        {#Checks the Boolean field Image with text? if true, use object-fit: fill; css good for photos with text, if false use object-fit: cover; css good for photographs#}
+        {% if paragraph.field_image_text_3.value == '1' %}
+        <div class="carousel-images__fill">
+          {{ content.field_carousel_image_3.0 }}
+        </div>
+          {% else %}
+            <div class="carousel-images__cover">
+              {{ content.field_carousel_image_3.0 }}
+            </div>
+          {% endif %}
+
+        <div class="carousel-caption d-sm-block">
+          <h5 class="carousel-images__title">{{ content.field_carousel_title_3.0 }}</h5>
+          <p class="carousel-images__description">{{ content.field_carousel_description_3.0 }}</p>
+          <a href="{{ content.field_carousel_url_link_3[0]['#url']|render }}" class="btn">Learn more</a>
+        </div>
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</section>
