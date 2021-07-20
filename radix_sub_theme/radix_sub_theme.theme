@@ -1,0 +1,75 @@
+<?php
+/**
+ * @file
+ * Theme functions
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Component\Render\FormattableMarkup;
+use Drupal\Core\Template\Attribute;
+use Drupal\node\Entity\Node;
+use Drupal\Core\Site\Settings;
+use Drupal\taxonomy\Entity\Term;
+use Drupal\Core\Url;
+use Drupal\media\Entity\Media;
+
+// Include all files from the includes directory.
+$includes_path = dirname(__FILE__) . '/includes/*.inc';
+foreach (glob($includes_path) as $filename) {
+  require_once dirname(__FILE__) . '/includes/' . basename($filename);
+}
+
+/**
+ * Implements hook_preprocess_page().
+ *
+ */
+//Hide the page title for content type Homepage
+function radix_sub_theme_preprocess_page(&$variables) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if (isset($variables['node']) && $variables['node'] instanceof Node) {
+    // Create variable out of the current node type
+    $node_type = $variables['node']->getType();
+    // Remove page title block.
+    //Hide title for homepage
+
+  }
+}
+
+/**
+ * Implements hook_form_search_block_form_alter().
+ *
+ */
+//replace saerch button with fontawesome
+function radix_sub_theme_form_search_block_form_alter(&$form, &$form_state) {
+  $form['keys']['#attributes']['placeholder'][] = t(' Search here...');
+//Leave the seach button blank so that you can use an magnify icon
+  $form['actions']['submit']['#value'] = ' ';
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter(). For creating
+ * custom (suggestion) page template based on content type names.
+ * We are using this so the the content type Section can have
+ * its own custom layout called page--section.html. OEA wants this layout to
+ * bleed to the edges of the screen. Downside is this forces the home page
+ * to usepage--section  instead of page--front template becasue the
+ * content it of type Section
+ */
+function radix_sub_theme_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if (!empty($node) && $node instanceof Node ) {
+    $content_type = $node->bundle();
+    $suggestions[] = 'page__'.$content_type;
+  }
+}
+
+/**
+ * Implements hook_preprocess_theme().
+ *
+ */
+// set the sites base url as a variable
+function radix_sub_theme_theme_preprocess(&$variables) {
+  global $base_url;
+  // Now you can use it.
+  $variables['base_url'] = $base_url;
+}

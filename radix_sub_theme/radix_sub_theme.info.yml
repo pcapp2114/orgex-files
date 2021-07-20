@@ -1,0 +1,37 @@
+name: Radix Sub Theme
+description: A theme based on Radix.
+screenshot: screenshot.png
+core_version_requirement: ^8.7.7 || ^9.0
+# version: VERSION
+engine: twig
+type: theme
+base theme: radix
+
+regions:
+  government_site: 'Government Site'
+  header_logo: 'Header Logo'
+  header_search: 'Header Search'
+  header_secondary_menu: 'Header secondary menu'
+  menu: 'Menu'
+  content: Content
+  footer: Footer
+
+libraries:
+  - radix/style
+  - radix_sub_theme/style
+
+libraries-override:
+  radix/bootstrap: false
+
+ckeditor_stylesheets:
+  - assets/css/radix_sub_theme.style.css
+
+component-libraries:
+  radix_sub_theme:
+    paths:
+      - ./src/components
+
+# Information added by Drupal.org packaging script on 2020-09-30
+version: '8.x-4.10'
+project: 'radix'
+datestamp: 1601449011

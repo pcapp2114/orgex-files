@@ -1,0 +1,150 @@
+<?php
+
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\NodeInterface;
+use Drupal\node\NodeForm;
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+use Drupal\Core\Routing\RouteMatch;
+use Drupal\Component\Utility\Html;
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+use Drupal\system\Entity\Menu;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\paragraphs\ParagraphInterface;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\paragraphs\Plugin\Field\FieldWidget\ParagraphsWidget;
+use Drupal\paragraphs\Plugin\EntityReferenceSelection\ParagraphSelection;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+
+/**
+ * Implements hook_theme().
+ */
+function web_modify_theme($existing, $type, $theme, $path) {
+// create variables to pass to the twig templates
+  $user = \Drupal::currentUser();
+  $name = \Drupal::currentUser()->getDisplayName();
+//  $title = "my title";
+
+  // this array allows for multiple twig templates
+  return [
+    'my_links' => [
+      'variables' => [
+        'render element' => 'elements',
+        // pass in a variable to the twig
+        'name' => $name,
+      ],
+      'template' => 'my-links'
+    ]
+  ];
+}
+
+/*
+ * Implements hook_node_edit_form_alter().
+ */
+function web_modify_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_state->getFormObject() instanceof NodeForm) {
+
+     // Show the form id
+     // dpm ($form_id);
+    // kint($form);
+     //kint($form_id);
+
+    // Get the node entity so we can retrieve the ids
+    $node = $form_state->getFormObject()->getEntity();
+
+    $form['content_information'] = [];
+
+    if (!empty($node->get('nid')->getString())) {
+      // Add the Entity ID to the top of the form
+      $form['content_information']['entity-id'] = [
+        '#type' => 'item',
+        '#title' => t('Content ID'),
+        '#markup' => $node->get('nid')->getString(),
+        '#wrapper_attributes' => ['class' => ['entity-meta__entity-id']],
+      ];
+    }
+
+    // Add the Entity ID to the meta data section of the form
+    $form['meta']['entity-id'] = [
+      '#type' => 'item',
+      '#title' => t('Content ID'),
+      '#markup' => $node->get('nid')->getString(),
+      '#wrapper_attributes' => ['class' => ['entity-meta__entity-id']],
+    ];
+
+    // Add the Entity UUID to the meta data section of the form
+    $form['meta']['entity-uuid'] = [
+      '#type' => 'item',
+      '#title' => t('Content UUID'),
+      '#markup' => $node->get('uuid')->getString(),
+      '#wrapper_attributes' => ['class' => ['entity-meta__entity-uuid']],
+    ];
+
+    // On node edit form, hide 'promotional' options tab
+    $form['options']['#access'] = FALSE;
+
+    // On node edit form, open and expand the 'menu' options tab. Add help text
+    $form['menu']['#open'] = TRUE;
+
+    // add help test to the Workflow moderation state field
+    $form['moderation_state']['#markup'] = 'A Published page is visible to everyone. Unpublished-Archived page are only visible to logged in users. Draft page are only visible to logged in users. Select Draft if you want to make changes and not have the changes visible to the public.';
+
+    // If content type is leadership, change the title field label to Name
+    if (in_array($form_id, array("node_leadership_form", "node_leadership_edit_form"))) {
+      $form['title']['widget']['0']['value']['#title'] = 'Name of person';
+    }
+
+    // If content type is history, change the title field label to Date of event
+    if (in_array($form_id, array("node_history_form", "node_history_edit_form"))) {
+      $form['title']['widget']['0']['value']['#title'] = 'Date of event';
+    }
+
+  }
+} // end hook form alter
+
+
+/**
+ * Implements hook_page_attachments().
+ */
+function web_modify_page_attachments(array &$attachments)  {
+  $attachments['#attached']['library'][] = 'web_modify/modify.library';
+}
+
+/**
+ * Implements hook_user_login().
+ */
+//redirect the user login
+function web_modify_user_login($account) {
+
+  $current_route = \Drupal::routeMatch()->getRouteName();
+//  if (!in_array($current_route, ['user.reset', 'user.reset.login'])) {
+//    $response = new RedirectResponse(Url::fromRoute('pfpa_node_edit.myroute')->toString());
+//    $response->send();
+//  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter() for \Drupal\entity_embed\Form\EntityEmbedDialog.
+ */
+function web_modify_form_entity_embed_dialog_alter(&$form, FormStateInterface $form_state)
+{
+  // Only show the medium and large image styles for WSYWIYG image inserts.
+  if (
+    !empty($form['attributes']['data-entity-embed-display-settings']) &&
+    !empty($form['attributes']['data-entity-embed-display-settings']['image_style'])
+  ) {
+    $valid_options = ['small_size', 'medium_size','large_size'];
+    $options = array_filter(
+      $form['attributes']['data-entity-embed-display-settings']['image_style']['#options'],
+      function ($index) use ($valid_options) {
+        return in_array($index, $valid_options);
+      },
+      ARRAY_FILTER_USE_KEY
+    );
+    $form['attributes']['data-entity-embed-display-settings']['image_style']['#options'] = $options;
+  }
+}

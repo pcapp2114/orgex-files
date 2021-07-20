@@ -1,0 +1,10 @@
+name: Web Modify
+type: module
+description:
+  1) Adds node id and uuid on node edit form
+  2) On node edit form, hide promotion options setting tab
+  3) Add the dashboard menu item and page to the admin toolbar
+  4) Redirect after user login
+core_version_requirement: ^8 || ^9
+package: 'Custom'
+dependencies:

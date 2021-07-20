@@ -1,0 +1,11 @@
+style:
+  version: VERSION
+  css:
+    theme:
+      assets/css/radix_sub_theme.style.css: {}
+  js:
+    assets/js/radix_sub_theme.script.js: {}
+    assets/js/custom.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
